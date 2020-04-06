@@ -2,7 +2,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -13,9 +13,6 @@ public class Start {
         Logger logger = LogManager.getLogger();
         Scanner scan = new Scanner(System.in);
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
-        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
-        LocalDateTime date = LocalDateTime.now();
 
         System.out.println("Ile godzin chcesz parkować?");
         int parkingTimeHours = scan.nextInt();
@@ -24,29 +21,41 @@ public class Start {
         int parkingTimeMinutes = scan.nextInt();
 
         LocalTime now = LocalTime.now();
-        LocalTime calculatingFinishedParkingTime = now.plusHours(parkingTimeHours).plusMinutes(parkingTimeMinutes);
+        LocalTime calculatedFinishedParkingTime = now.plusHours(parkingTimeHours).plusMinutes(parkingTimeMinutes);
 
-        LocalTime eightOclock = LocalTime.parse("08:00");
-        LocalTime seventeenOclock = LocalTime.parse("17:00");
+        LocalTime start = LocalTime.parse("08:00");
+        LocalTime stop = LocalTime.parse("17:00");
+
+
+//        LocalTime start = LocalTime.parse("08:00");
+//        LocalTime stop = LocalTime.parse("17:00");
+//        LocalTime start = now.isBefore(defaultStart) ? defaultStart : now;
+//        LocalTime stop = now.isAfter(defaultStop) ? defaultStop : now;
+//        long dur = Duration.between(start, stop).toMinutes();
+//        double costParkingTime = CostParkingTime.costParkingTime(dur);
+
         double costParkingTime = 0;
-
-        if (now.isBefore(eightOclock) && calculatingFinishedParkingTime.isAfter(eightOclock)) {
-            long duration = Duration.between(eightOclock, calculatingFinishedParkingTime).toMinutes();
-            costParkingTime = CalculatingCostParkingTime.costParkingTime((double) duration);
-        } else if (calculatingFinishedParkingTime.isAfter(seventeenOclock) && now.isBefore(seventeenOclock)) {
-            long duration = Duration.between(now, seventeenOclock).toMinutes();
-            costParkingTime = CalculatingCostParkingTime.costParkingTime((double) duration);
-        } else if((now.isBefore(eightOclock) && calculatingFinishedParkingTime.isBefore(eightOclock)) || (now.isAfter(seventeenOclock) && calculatingFinishedParkingTime.isAfter(seventeenOclock)) || now.equals(seventeenOclock)){
+        if (now.isBefore(start) && calculatedFinishedParkingTime.isAfter(start)) {
+            long duration = Duration.between(start, calculatedFinishedParkingTime).toMinutes();
+            costParkingTime = CostParkingTime.costParkingTime(duration);
+        } else if (calculatedFinishedParkingTime.isAfter(stop) && now.isBefore(stop)) {
+            long duration = Duration.between(now, stop).toMinutes();
+            costParkingTime = CostParkingTime.costParkingTime(duration);
+        } else if(calculatedFinishedParkingTime.isBefore(stop) && now.isAfter(start)) {
+            long duration = Duration.between(now, calculatedFinishedParkingTime).toMinutes();
+            costParkingTime = CostParkingTime.costParkingTime(duration);
+        } else {
             costParkingTime=0;
         }
-        else {
-            long duration = Duration.between(now, calculatingFinishedParkingTime).toMinutes();
-            costParkingTime = CalculatingCostParkingTime.costParkingTime((double) duration);
-        }
+
+        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
 
         logger.info("BILECIK:\n" +
                 "DO ZAPLATY -> {}\n" +
                 "CZAS POSTOJU -> OD {} DO {}\n" +
-                "Data i Godzina zakupu biletu -> {}", costParkingTime, tf.format(date), tf.format(calculatingFinishedParkingTime), dtf.format(date));
+                "Data i Godzina zakupu biletu -> {}", 
+                costParkingTime, 
+                tf.format(now), tf.format(calculatedFinishedParkingTime),
+                DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm").format(LocalDate.now()));
     }
 }
