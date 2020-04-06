@@ -2,7 +2,7 @@ public class CalculatingCostParkingTime {
 
     static int costParkingHourInPLN = 3;
 
-    public static double costParkingTime(int parkingTimeMinutes) {
+    public static double costParkingTime(double parkingTimeMinutes) {
         if (parkingTimeMinutes <= 15) {
             return 0;
         }

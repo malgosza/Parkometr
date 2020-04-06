@@ -32,16 +32,16 @@ public class Start {
 
         if (now.isBefore(eightOclock) && calculatingFinishedParkingTime.isAfter(eightOclock)) {
             long duration = Duration.between(eightOclock, calculatingFinishedParkingTime).toMinutes();
-            costParkingTime = CalculatingCostParkingTime.costParkingTime((int) duration);
+            costParkingTime = CalculatingCostParkingTime.costParkingTime((double) duration);
         } else if (calculatingFinishedParkingTime.isAfter(seventeenOclock) && now.isBefore(seventeenOclock)) {
             long duration = Duration.between(now, seventeenOclock).toMinutes();
-            costParkingTime = CalculatingCostParkingTime.costParkingTime((int) duration);
+            costParkingTime = CalculatingCostParkingTime.costParkingTime((double) duration);
         } else if((now.isBefore(eightOclock) && calculatingFinishedParkingTime.isBefore(eightOclock)) || (now.isAfter(seventeenOclock) && calculatingFinishedParkingTime.isAfter(seventeenOclock)) || now.equals(seventeenOclock)){
             costParkingTime=0;
         }
         else {
             long duration = Duration.between(now, calculatingFinishedParkingTime).toMinutes();
-            costParkingTime = CalculatingCostParkingTime.costParkingTime((int) duration);
+            costParkingTime = CalculatingCostParkingTime.costParkingTime((double) duration);
         }
 
         logger.info("BILECIK:\n" +
