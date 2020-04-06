@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9bf6c790-2017-4610-929d-a08b7f505b0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CalculatingHourFinishedParking.java" afterDir="false" />
+    <list default="true" id="9bf6c790-2017-4610-929d-a08b7f505b0e" name="Default Changelist" comment="Calculating the hour of finite parking time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CalculatingParkingTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CalculatingCostParkingTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CalculatingCostParkingTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CalculatingCostParkingTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CalculatingHourFinishedParking.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Start.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585995021286</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Calculating the hour of finite parking time">
+      <created>1586021888078</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586021888078</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +108,28 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Calculating Parking Time" />
-    <option name="LAST_COMMIT_MESSAGE" value="Calculating Parking Time" />
+    <MESSAGE value="Calculating the hour of finite parking time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Calculating the hour of finite parking time" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CalculatingCostParkingTime.java</url>
+          <line>5</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CalculatingCostParkingTime.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CalculatingCostParkingTime.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
